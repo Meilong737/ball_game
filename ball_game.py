@@ -8,7 +8,7 @@ Variables
 '''
 filename="fame.csv"
 name=""
-GAMEOVER=1import pygame # load pygame keywords
+import pygame # load pygame keywords
 import sys # let python use file system
 import os # help python identify your OS
 import time
@@ -38,7 +38,7 @@ PURPLE = (150, 0, 150)
 WHITE = (254, 254, 254)
 worldx = 1200
 worldy = 730
-fps   = 50 # frame rate
+fps   = 60 # frame rate
 ani   = 4   # animation cycles
 steps=5
 '''
@@ -299,7 +299,7 @@ def instructions():
                     main=False
         world.fill(PURPLE)
         largeFont=pygame.font.SysFont("arial",35)
-        textstring="The aim of the game is to keep the ball going for as long as possible.After each point the speed of the ball goes faster.. .The left arrow and a makes you go left.The right arrow and d makes you go right. If you press a and the left arrow at the same time you go faster.It is the same for the d and the right arrow.You can go through the walls.When you enter your name DO NOT press shift as you will exit that screen.. .Good luck!."
+        textstring="The aim of the game is to keep the ball going for as long as possible.After each point the speed of the ball goes faster. .The left arrow and a makes you go left.The right arrow and d makes you go right. If you press a and the left arrow at the same time you go faster.It is the same for the d and the right arrow.You can go through the walls.When you enter your name DO NOT press shift as you will exit that screen.Where ever you die you will spawn there.To exit any screen press Q. .Good luck!"
         textlist=textstring.split(".")
         y=50
         for t in textlist:
@@ -321,6 +321,8 @@ while main == True:
             main = False
             
         if event.type == pygame.KEYDOWN:
+#            if event.key == ord ('m'):
+                
             if event.key == ord ('h'):
                 print ('hall of fame')
                 fame()
@@ -354,7 +356,9 @@ while main == True:
     text=largeFont.render("(E)nter Name",0,WHITE)
     world.blit(text,(200,350))
     text=largeFont.render("Good luck "+name+"!",1,WHITE)
-    world.blit(text,(200,450))
+    world.blit(text,(500,500))
+    text=largeFont.render("(M)ultiplayer",0,WHITE)
+    world.blit(text,(200,400))
     
     pygame.display.flip()
     clock.tick
